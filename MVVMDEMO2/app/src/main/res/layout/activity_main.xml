@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.xunjie.mvvmdemo2.modelview.MainViewModel" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".ui.MainActivity">
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/refresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+        <com.xunjie.mvvmdemo2.view.MyRecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical"
+            app:adapter="@{viewModel.adapter}"
+            app:data="@{viewModel.data}"
+            app:isLoading="@{viewModel.loading}"
+            app:footerStatus="@{viewModel.footerStatus}"
+            app:onPageListener="@{viewModel.onPageListener}"
+            app:layoutManager="@{viewModel.linearLayoutManager}" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </RelativeLayout>
+</layout>
